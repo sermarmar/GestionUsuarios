@@ -1,0 +1,8 @@
+#Spring
+spring:
+  application:
+    name: gestion-usuarios
+  cloud:
+    fail-fast: true
+    enabled: true
+    uri: http://usesr:password@localhost:8888
