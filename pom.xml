@@ -8,14 +8,14 @@
 	<version>0.0.1-SNAPSHOT</version>
 	<packaging>jar</packaging>
 
-	<name>GestionUsuarios</name>
-	<description>GestionUsuarios for Spring Boot</description>
+	<name>com.cice.GestionUsuarios.GestionUsuarios.GestionUsuarios</name>
+	<description>com.cice.GestionUsuarios.GestionUsuarios.GestionUsuarios for Spring Boot</description>
 
 	<parent>
 		<groupId>org.springframework.boot</groupId>
 		<artifactId>spring-boot-starter-parent</artifactId>
 		<version>2.0.3.RELEASE</version>
-		<relativePath/> <!-- lookup parent from repository -->
+		<relativePath/> <!-- lookup parent from com.cice.GestionUsuarios.GestionUsuarios.repository -->
 	</parent>
 
 	<properties>

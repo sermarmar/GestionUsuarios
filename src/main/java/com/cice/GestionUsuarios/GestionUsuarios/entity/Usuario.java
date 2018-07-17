@@ -1,4 +1,4 @@
-package entity;
+package com.cice.GestionUsuarios.GestionUsuarios.entity;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -21,9 +21,5 @@ public class Usuario {
     private String name;
     @Column(name = "pass")
     private String pass;
-
-    public String getName(){
-        return this.name;
-    }
 
 }
