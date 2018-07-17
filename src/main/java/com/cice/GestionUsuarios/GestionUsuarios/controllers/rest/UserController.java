@@ -20,17 +20,17 @@ public class UserController {
     @Qualifier("Gestion")
     IGestionUsuarios gestionUsuarios;
 
-    @RequestMapping(name = "/health", method = RequestMethod.GET)
+    @RequestMapping(method = RequestMethod.GET)
     public ResponseEntity getStatus(){
         return new ResponseEntity(HttpStatus.OK);
     }
 
-    @RequestMapping(name = "/{idUsuario}", method = RequestMethod.GET)
+    @RequestMapping(name = "{idUsuario}", method = RequestMethod.GET)
     public ResponseEntity<UsuarioDTO> recuperarUsuarioPorId(@PathVariable(value = "idUsuario") String idUsuario){
         return ResponseEntity.ok(gestionUsuarios.getusuario(1L));
     }
 
-    @RequestMapping(name = "/login", consumes = MediaType.APPLICATION_JSON_VALUE, method = RequestMethod.POST)
+    @RequestMapping(name = "login", consumes = MediaType.APPLICATION_JSON_VALUE, method = RequestMethod.POST)
     public Usuario login(@RequestBody Usuario usuario){
 
         //ResponseEntity<Usuario> response = new ResponseEntity<Usuario>().;
@@ -38,7 +38,7 @@ public class UserController {
         return usuario;
     }
 
-    @RequestMapping(name = "/crearUsuario", method = RequestMethod.POST)
+    @RequestMapping(name = "crearUsuario", method = RequestMethod.POST)
     public ResponseEntity<UsuarioDTO> crearUsuario(@RequestBody UsuarioDTO usuarioDTO){
 
         log.debug("Usuario recibido: {}", usuarioDTO.toString());
