@@ -23,8 +23,9 @@ public class GestionUsuarios implements IGestionUsuarios{
 
     @Override
     public UsuarioDTO getUsuario(String user, String pass) {
-        //usuarioRepository.findUsuarioEntityByUserAndPass(user, pass);
-        return null;
+        Usuario usuario = usuarioRepository.findUsuarioEntityByUserAndPass(user, pass);
+        UsuarioDTO usuarioDTO = new UsuarioDTO(usuario.getId(), usuario.getName(), usuario.getPass());
+        return usuarioDTO;
     }
 
     @Override

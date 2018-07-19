@@ -10,7 +10,7 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface UsuarioRepository extends JpaRepository<Usuario, Long> {
 
-    //@Query("SELECT * FROM usuarios WHERE name = :name AND pass = :pass")
-    //UsuarioDTO findUsuarioEntityByUserAndPass(@Param("name") String user, @Param("pass") String pass);
+    @Query(value = "SELECT * FROM usuarios WHERE name = :name AND pass = :pass", nativeQuery = true)
+    Usuario findUsuarioEntityByUserAndPass(@Param("name") String user, @Param("pass") String pass);
 
 }
