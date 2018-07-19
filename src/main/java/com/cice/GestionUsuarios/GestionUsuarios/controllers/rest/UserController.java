@@ -54,4 +54,9 @@ public class UserController {
         return new ResponseEntity<>(headers, HttpStatus.CREATED);
 
     }
+
+    @RequestMapping(value = "/usuario/{idUsuario}", method = RequestMethod.DELETE)
+    public ResponseEntity<String> eliminarUsuarioYTodosSusProductos(@PathVariable(value = "idUsuario") String idUsuario){
+        return null;
+    }
 }

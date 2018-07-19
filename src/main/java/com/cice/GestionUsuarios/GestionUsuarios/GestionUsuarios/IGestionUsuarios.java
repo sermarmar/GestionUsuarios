@@ -17,6 +17,6 @@ public interface IGestionUsuarios {
 
     UsuarioDTO actualizarUsuario(String nombre);
 
-    UsuarioDTO eliminarUsuario(String nombre);
+    UsuarioDTO eliminarUsuario(Long idUsuario);
 
 }

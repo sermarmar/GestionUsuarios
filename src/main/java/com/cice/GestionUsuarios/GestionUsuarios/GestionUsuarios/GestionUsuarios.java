@@ -2,8 +2,11 @@ package com.cice.GestionUsuarios.GestionUsuarios.GestionUsuarios;
 
 import com.cice.GestionUsuarios.GestionUsuarios.controllers.dto.UsuarioDTO;
 import com.cice.GestionUsuarios.GestionUsuarios.entity.Usuario;
+import com.cice.GestionUsuarios.GestionUsuarios.feign.IProductoFeign;
 import com.cice.GestionUsuarios.GestionUsuarios.repository.UsuarioRepository;
+import com.netflix.discovery.converters.Auto;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -15,6 +18,9 @@ public class GestionUsuarios implements IGestionUsuarios{
 
     @Autowired
     UsuarioRepository usuarioRepository;
+
+    @Autowired
+    IProductoFeign productoFeign;
 
     @Override
     public List<UsuarioDTO> listaNombre() {
@@ -51,7 +57,10 @@ public class GestionUsuarios implements IGestionUsuarios{
     }
 
     @Override
-    public UsuarioDTO eliminarUsuario(String nombre) {
+    public UsuarioDTO eliminarUsuario(Long idUsuario) {
+        usuarioRepository.deleteById(idUsuario);
+        productoFeign.eliminarProductosByIdUsuario(idUsuario);
         return null;
     }
+
 }
