@@ -56,7 +56,8 @@ public class UserController {
     }
 
     @RequestMapping(value = "/usuario/{idUsuario}", method = RequestMethod.DELETE)
-    public ResponseEntity<String> eliminarUsuarioYTodosSusProductos(@PathVariable(value = "idUsuario") String idUsuario){
-        return null;
+    public ResponseEntity<String> eliminarUsuarioYTodosSusProductos(@PathVariable(value = "idUsuario") Long idUsuario){
+        gestionUsuarios.eliminarUsuario(idUsuario);
+        return ResponseEntity.ok("Todo va bien...");
     }
 }

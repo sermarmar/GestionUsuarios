@@ -5,9 +5,12 @@ import com.cice.GestionUsuarios.GestionUsuarios.entity.Usuario;
 import com.cice.GestionUsuarios.GestionUsuarios.feign.IProductoFeign;
 import com.cice.GestionUsuarios.GestionUsuarios.repository.UsuarioRepository;
 import com.netflix.discovery.converters.Auto;
+import com.netflix.hystrix.contrib.javanica.annotation.HystrixCommand;
+import com.netflix.ribbon.proxy.annotation.Hystrix;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
+import org.springframework.web.client.RestTemplate;
 
 import java.util.List;
 import java.util.Optional;
@@ -57,9 +60,18 @@ public class GestionUsuarios implements IGestionUsuarios{
     }
 
     @Override
+    @HystrixCommand(fallbackMethod = "eliminarUsuarioDefault")
     public UsuarioDTO eliminarUsuario(Long idUsuario) {
-        usuarioRepository.deleteById(idUsuario);
-        productoFeign.eliminarProductosByIdUsuario(idUsuario);
+        //usuarioRepository.deleteById(idUsuario);
+        //productoFeign.eliminarProductosByIdUsuario(idUsuario);
+        System.out.println("Todo bien");
+        new RestTemplate().delete(
+                "http://localhost:8765/gestion-productos/producto/{idUsuario}",
+                idUsuario);
+        return new UsuarioDTO();
+    }
+    private UsuarioDTO eliminarUsuarioDefault(){
+        System.out.println("Error");
         return null;
     }
 
